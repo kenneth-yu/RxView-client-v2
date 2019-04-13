@@ -37,14 +37,34 @@ class Dashboard extends React.Component{
   render(){
     const {userSession} = this.state
     return(
-      <div>
-        <input name="search" type="text" value={this.state.search} onChange={this.changeHandler}/>
-        <input name="searchBtn" type="button" value="Search" onClick ={this.clickHandler}/>
+      <div className="login_page">
+      <div className="login_container">
+        <div className="form-group">
+          <input name="search" type="text" value={this.state.search} className="form-control" onChange={this.changeHandler}/>
+        </div>
+
+        <div className="form-group">
+          <input name="searchBtn" type="button" value="Search" onClick ={this.clickHandler} placeholder="Username"/>
+        </div>
         { userSession.isUserSignedIn() ? <Logout userSession={userSession}/>
         : <Login userSession={userSession} /> }
+      </div>
       </div>
     )
   }
 }
 
 export default Dashboard
+
+// <div className="login_container">
+//   <h1>RxView 💊</h1>
+//   <div class="form-group">
+//     <input type="text" className="form-control" placeholder="Username" />
+//   </div>
+//
+//   <div class="form-group">
+//     <input type="password" className="form-control" placeholder="Password" />
+//   </div>
+//
+//   <button type="button" className="btn btn-outline-danger">Login</button>
+// </div>

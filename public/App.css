@@ -1,0 +1,79 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.login_page {
+  background-image: url("https://static1.squarespace.com/static/5908027c20099e374ad3d70e/t/595146d986e6c0065517a39a/1498498253443/symbol-of-caduceus.jpg?format=1500w");
+  background-size: auto;
+  height: 500px;
+}
+
+.login_container {
+  margin: 200px auto;
+  padding: 50px;
+  width: 50%;
+  border-radius: 2%;
+  background-color: white;
+  border: 3px solid #5bb1cd;
+  color: #C0C0C0;
+  letter-spacing: 3px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.login_container input {
+  text-align: center;
+}
+
+.login_container button {
+  font-size: 18px;
+  border: 1px solid #C0C0C0;
+  border-radius: 2%;
+}
+
+.login_container h1 {
+  color: #5bb1cd;
+  letter-spacing: 5px;
+}
+
+.drug_name {
+  text-align: center;
+  font-size: 50px;
+  color: #5bb1cd;
+}
+
+.showDrugContainer {
+  width: 90%;
+  border: 1px solid #5bb1cd;
+  margin: 50px auto;
+}

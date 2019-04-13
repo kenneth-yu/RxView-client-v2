@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import Dashboard from './containers/Dashboard'
+import Dashboard from './containers/Dashboard';
+import DrugShow from './components/DrugShow';
+import { Route, Switch, withRouter } from 'react-router-dom';
+
 // import './stylesheets/main.scss';
 
 // import MyNavbar from './components/MyNavbar';
@@ -14,25 +17,14 @@ class App extends Component {
 
   }
 
-  // componentDidMount = async () => {
-  //   const {userSession} = this.state
-  //   if (!userSession.isUserSignedIn() && userSession.isSignInPending() ) {
-  //     const userData = await userSession.handlePendingSignIn()
-  //     window.location="/"
-  //
-  //     // if (!userData.username) {
-  //     //   throw new Error('This app requires a username.')
-  //     // } else {
-  //     //   window.location = "/"
-  //     // }
-  //   }
-  // }
-
   render() {
     const {userSession} = this.state
     return (
-      <div className="App">
-      <Dashboard/>
+      <div className='App'>
+       <Switch>
+         <Route path='/meds' component={DrugShow} />
+         <Route path='/' component={Dashboard} />
+       </Switch>
      </div>
     );
   }
