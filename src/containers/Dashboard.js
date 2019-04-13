@@ -9,6 +9,7 @@ import EntryForm from '../components/EntryForm';
 import UserEdit from '../components/UserEdit'
 import { Route, Switch } from "react-router-dom";
 import {connect} from 'react-redux';
+import ProfilePage from '../components/ProfilePage';
 
 class Dashboard extends React.Component{
   state = {
@@ -44,9 +45,10 @@ class Dashboard extends React.Component{
     const {userSession} = this.state
     return(
       <Switch>
+        <Route path='/myprofile' render={() => <ProfilePage userSession={userSession}/>}/>
         <Route path='/newprescription' component={RxForm}/>
         <Route path='/newentry' component={EntryForm}/>
-        <Route path='/useredit' component={UserEdit}/>
+        <Route path='/useredit' render={() => <UserEdit userSession={userSession}/> }/>
       <div>
         <input name="search" type="text" value={this.state.search} onChange={this.changeHandler}/>
         <input name="searchBtn" type="button" value="Search" onClick ={this.clickHandler}/>
