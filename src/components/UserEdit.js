@@ -17,8 +17,10 @@ class UserEdit extends React.Component{
     })
   }
 
-  clickHandler = (event) => {
-    console.log(this.state.search)
+  clickHandler = async (event) => {
+    const options = { decrypt: false }
+    await this.props.userSession.putFile('RxViewProfile.json', JSON.stringify(this.state), options)
+    window.location = "/myprofile"
   }
 
   render(){

@@ -15,6 +15,7 @@ class RxForm extends React.Component{
   clickHandler = (event) => {
     console.log(this.state.search)
   }
+  
   render(){
     return(
       <div className="rx_form">
