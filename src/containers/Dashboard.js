@@ -8,10 +8,7 @@ import RxForm from '../components/RxForm';
 import EntryForm from '../components/EntryForm';
 import UserEdit from '../components/UserEdit'
 import { Route, Switch } from "react-router-dom";
-<<<<<<< HEAD
 import {connect} from 'react-redux';
-=======
->>>>>>> e0c3020e845a896e63eb26f6749bc8c23a6051d5
 
 class Dashboard extends React.Component{
   state = {
@@ -37,11 +34,7 @@ class Dashboard extends React.Component{
     this.setState({
       [event.target.name]: event.target.value
     })
-<<<<<<< HEAD
   }
-=======
-  } // I added a space
->>>>>>> e0c3020e845a896e63eb26f6749bc8c23a6051d5
 
   clickHandler = (event) => {
     console.log(this.state.search)
@@ -66,12 +59,8 @@ class Dashboard extends React.Component{
   }
 }
 
-<<<<<<< HEAD
 const mapStateToProps = state => ({
   // userSession: state.userSession
 })
 
 export default connect(mapStateToProps)(Dashboard)
-=======
-export default Dashboard
->>>>>>> e0c3020e845a896e63eb26f6749bc8c23a6051d5
