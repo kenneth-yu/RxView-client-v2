@@ -2,8 +2,10 @@ import React from 'react'
 
 class Entry extends React.Component{
   state = {
-    comments: ""
+    comments: "",
+    date: ""
   }
+
   changeHandler = (event) =>{
     console.log(event.target.value)
     this.setState({
@@ -21,6 +23,7 @@ class Entry extends React.Component{
         <h2>New Entry</h2>
         <span>Comments: </span>
         <input type="textarea" name="comments" onChange={this.changeHandler} value={this.state.value}/>
+        <input type="textarea" name="date" onChange={this.changeHandler} value={this.state.value}/>
         <input type="button" name="submit" onClick={this.clickHandler} value="Submit"/>
       </div>
     )
