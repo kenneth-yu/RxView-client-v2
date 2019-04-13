@@ -17,14 +17,16 @@ class Entry extends React.Component{
 
   render(){
     return(
-      <div>
+      <div className="rx_form">
         <h2>New Entry</h2>
-        <span>Comments: </span>
-        <input type="textarea" name="comments" onChange={this.changeHandler} value={this.state.value}/>
-        <input type="button" name="submit" onClick={this.clickHandler} value="Submit"/>
+        <div class="form-group">
+          <input type="textarea" name="comments" className="form-control" onChange={this.changeHandler} value={this.state.value} placeholder="Comments..."/>
+          <input type="button" name="submit" className="btn btn-info" onClick={this.clickHandler} value="Submit" placeholder="Submit"/>
+        </div>
       </div>
     )
   }
 }
+
 
 export default Entry

@@ -23,14 +23,16 @@ class UserEdit extends React.Component{
 
   render(){
     return(
-      <div>
+      <div className="rx_form">
         <h2>User Edit</h2>
-        <span>Name: </span><input type="text" onChange={this.changeHandler} name="name"/><br/>
-        <span>Age: </span><input type="text" onChange={this.changeHandler} name="age"/><br/>
-        <span>Ethnicity: </span><input type="text" onChange={this.changeHandler} name="ethnicity"/><br/>
-        <span>Country: </span><input type="text" onChange={this.changeHandler} name="country"/><br/>
-        <span>Gender: </span><input type="text" onChange={this.changeHandler} name="gender"/><br/>
-        <input type="button" name="submit" onClick={this.clickHandler} value="Submit"/>
+        <div class="form-group">
+          <input type="text" className="form-control" onChange={this.changeHandler} name="name" placeholder="Name..." /><br/>
+          <input type="text" className="form-control" onChange={this.changeHandler} name="age" placeholder="Age..." /><br/>
+          <input type="text" className="form-control" onChange={this.changeHandler} name="ethnicity" placeholder="Ethnicity..." /><br/>
+          <input type="text" className="form-control" onChange={this.changeHandler} name="country" placeholder="Country..." /><br/>
+          <input type="text" className="form-control" onChange={this.changeHandler} name="gender" placeholder="Gender..." /><br/>
+          <input type="button" name="submit" onClick={this.clickHandler} value="Submit"/ >
+        </div>
       </div>
     )
   }

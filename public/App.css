@@ -77,3 +77,23 @@
   border: 1px solid #5bb1cd;
   margin: 50px auto;
 }
+
+.rx_form {
+  margin: 200px auto;
+  border: 1px solid #5bb1cd;
+  width: 30%;
+  padding: 40px;
+  border-radius: 10%;
+}
+
+input {
+  text-align: center;
+}
+
+.logo {
+  letter-spacing: 3px;
+}
+
+span {
+  color: #5bb1cd;
+}

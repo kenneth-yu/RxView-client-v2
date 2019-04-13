@@ -17,9 +17,11 @@ class RxForm extends React.Component{
   }
   render(){
     return(
-      <div>
+      <div className="rx_form">
         <h2>New Prescription</h2>
-        <span>Dosage: </span><input type="text" name="dosage" onChange={this.changeHandler} value={this.state.dosage}/>
+        <div class="form-group">
+        <input type="text" name="dosage" className="form-control" onChange={this.changeHandler} value={this.state.dosage} placeholder="Dosage..."/>
+        </div>
         <input type="button" clickHandler={this.clickHandler} name="submit" value="Submit"/>
       </div>
     )

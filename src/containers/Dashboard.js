@@ -46,8 +46,9 @@ class Dashboard extends React.Component{
         <Route path='/newprescription' component={RxForm}/>
         <Route path='/newentry' component={EntryForm}/>
         <Route path='/useredit' component={UserEdit}/>
-      <div>
-        <input name="search" type="text" value={this.state.search} onChange={this.changeHandler}/>
+      <div className="rx_form">
+      <h1 className="logo"><span>Rx</span>View</h1>
+        <input name="search" className="form-control" type="text" value={this.state.search} onChange={this.changeHandler} placeholder="Search..."/>
         <input name="searchBtn" type="button" value="Search" onClick ={this.clickHandler}/>
         { userSession.isUserSignedIn() ? <Logout userSession={userSession}/>
         : <Login userSession={userSession} /> }
