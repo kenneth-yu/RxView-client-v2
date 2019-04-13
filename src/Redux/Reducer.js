@@ -1,13 +1,13 @@
 const initialState = {
   currentUser: {},
-  userSession: {type:1}
+  userData: {}
 }
 
 export default function reducer(state = initialState, action) {
   switch (action.type){
-    case 'LOAD_USER_SESSION':
-      console.log("DDDD", action.payload);
-      return {...state, userSession: action.payload}
+    case 'LOAD_USER_DATA':
+      console.log("DATA", action.payload);
+      return {...state, userData: action.payload}
     default:
       return state
   }
