@@ -6,7 +6,6 @@ class ProfilePage extends React.Component {
     data: {}
   }
 
-
   componentDidMount = async () => {
     const options = { decrypt: true }
     const result = await this.props.userSession.getFile('RxViewProfile.json', options)
