@@ -1,24 +1,31 @@
-const getMeds = error => ({ type: "LOGIN_USER_ERROR", payload: error });
+export const loadUserSession = userSession => ({
+  type: "LOAD_USER_SESSION",
+  payload: userSession
+});
 
-export const getTheMeds = token => {
+export const setMeds = meds => ({
+  type: "SET_MEDS",
+  payload: meds
+});
+
+export const getTheMeds = () => {
   return dispatch => {
-    dispatch(getMeds());
-    fetch("http://localhost:3000/api/v1/miles-routes", {
+    fetch("http://localhost:3000/api/v1/drugs", {
       method: "GET",
       headers: {
         "content-type": "application/json",
-        accepts: "application/json",
-        Authorization: `Bearer ${token}`
+        accepts: "application/json"
       }
     })
       .then(res => res.json())
-      .then(data => {
-        if (data.error) {
-          dispatch(getMeds(data.error));
-        } else {
-          dispatch(getMeds(data.user));
-        }
-      })
-      .catch(console.error);
+      .then(res => {
+        dispatch(setMeds(res));
+      });
   };
 };
+//
+// export const getTheMeds = () => dispatch => {
+//   return fetch("http://localhost:3000//api/v1/drugs")
+//     .then(r => r.json())
+//     .then(res => console.log(res));
+// };

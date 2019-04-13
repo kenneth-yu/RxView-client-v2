@@ -4,7 +4,8 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case "GET_MEDS":
+    case "SET_MEDS":
+      return { ...state, drugs: action.payload };
     default:
       return state;
   }

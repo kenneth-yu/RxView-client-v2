@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-
+import { Route, Switch } from "react-router-dom";
 import Dashboard from "./containers/Dashboard";
 import DrugShow from "./components/DrugShow";
 import { appConfig } from "./utils/constants";
 import { UserSession } from "blockstack";
-import { Route, Switch, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { loadUserSession } from "./Redux/Actions";
+
 class App extends Component {
   state = {
     userSession: new UserSession({ appConfig })
@@ -12,8 +14,11 @@ class App extends Component {
 
   componentDidMount = async () => {
     const { userSession } = this.state;
+    console.log("XX", userSession);
+    this.props.loadUserSession(userSession);
     if (!userSession.isUserSignedIn() && userSession.isSignInPending()) {
       const userData = await userSession.handlePendingSignIn();
+      console.log("userData", userData);
       window.location = "/";
     }
   };
@@ -30,4 +35,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => ({
+  loadUserSession: userSession => dispatch(loadUserSession(userSession))
+});
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(App);
