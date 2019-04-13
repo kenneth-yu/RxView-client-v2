@@ -26,7 +26,7 @@ class ProfilePage extends React.Component {
     console.log("state", this.state);
     const {name, age, ethnicity, gender, country} = this.state.data
     return (
-      <div>
+      <div className="rx_form">
         <h1>Name: {name}</h1>
         <p>Gender: {gender}</p>
         <p>Age: {age}</p>
