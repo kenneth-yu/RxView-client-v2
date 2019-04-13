@@ -1,38 +1,26 @@
 import React, { Component } from 'react';
-import Dashboard from './containers/Dashboard'
-// import './stylesheets/main.scss';
-
-// import MyNavbar from './components/MyNavbar';
-
-
-// import {Container} from 'react-bulma-components';
-
+import Dashboard from './containers/Dashboard';
+import {appConfig} from './utils/constants';
+import {UserSession} from 'blockstack';
 
 
 class App extends Component {
   state = {
-
+    userSession: new UserSession({appConfig})
   }
 
-  // componentDidMount = async () => {
-  //   const {userSession} = this.state
-  //   if (!userSession.isUserSignedIn() && userSession.isSignInPending() ) {
-  //     const userData = await userSession.handlePendingSignIn()
-  //     window.location="/"
-  //
-  //     // if (!userData.username) {
-  //     //   throw new Error('This app requires a username.')
-  //     // } else {
-  //     //   window.location = "/"
-  //     // }
-  //   }
-  // }
+    componentDidMount = async () => {
+      const {userSession} = this.state
+      if (!userSession.isUserSignedIn() && userSession.isSignInPending() ) {
+        const userData = await userSession.handlePendingSignIn()
+        window.location="/"
+      }
+    }
 
   render() {
-    const {userSession} = this.state
     return (
       <div className="App">
-      <Dashboard/>
+      <Dashboard userSession={this.state.userSession}/>
      </div>
     );
   }

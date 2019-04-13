@@ -6,22 +6,7 @@ import Logout from '../components/Logout';
 
 class Dashboard extends React.Component{
   state = {
-    search: "",
-    userSession: new UserSession({appConfig})
-  }
-
-  componentDidMount = async () => {
-    const {userSession} = this.state
-    if (!userSession.isUserSignedIn() && userSession.isSignInPending() ) {
-      const userData = await userSession.handlePendingSignIn()
-      window.location="/"
-
-      // if (!userData.username) {
-      //   throw new Error('This app requires a username.')
-      // } else {
-      //   window.location = "/"
-      // }
-    }
+    search: ""
   }
 
   changeHandler = (event) =>{
@@ -35,7 +20,7 @@ class Dashboard extends React.Component{
   }
 
   render(){
-    const {userSession} = this.state
+    const {userSession} = this.props
     return(
       <div>
         <input name="search" type="text" value={this.state.search} onChange={this.changeHandler}/>
