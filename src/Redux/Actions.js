@@ -1,4 +1,4 @@
-export const loadUserData = (userData) => ({
+const loadUserData = (userData) => ({
   type: "LOAD_USER_DATA",
   payload: userData
 })
