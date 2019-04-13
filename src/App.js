@@ -32,7 +32,7 @@ class App extends Component {
     const {userSession} = this.state
     return (
       <div className="App">
-          { !userSession.isUserSignedIn() ? <Logout userSession={userSession}/>
+          { userSession.isUserSignedIn() ? <Logout userSession={userSession}/>
             : <Login userSession={userSession} /> }
      </div>
     );
