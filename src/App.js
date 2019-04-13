@@ -31,7 +31,7 @@ class App extends Component {
       <Switch>
         <Route path='/' render={() => <Dashboard userSession={userSession}/> }/>
       </Switch>
-     </div>
+    </div>
     );
   }
 }
