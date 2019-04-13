@@ -4,6 +4,10 @@ import {UserSession} from 'blockstack';
 import Login from '../components/Login';
 import Logout from '../components/Logout';
 import ViewProfile from '../components/ViewProfile';
+import RxForm from '../components/RxForm';
+import EntryForm from '../components/EntryForm';
+import UserEdit from '../components/UserEdit'
+import { Route, Switch } from "react-router-dom";
 
 class Dashboard extends React.Component{
   state = {
@@ -38,6 +42,10 @@ class Dashboard extends React.Component{
   render(){
     const {userSession} = this.state
     return(
+      <Switch>
+        <Route path='/newprescription' component={RxForm}/>
+        <Route path='/newentry' component={EntryForm}/>
+        <Route path='/useredit' component={UserEdit}/>
       <div>
         <input name="search" type="text" value={this.state.search} onChange={this.changeHandler}/>
         <input name="searchBtn" type="button" value="Search" onClick ={this.clickHandler}/>
@@ -45,6 +53,7 @@ class Dashboard extends React.Component{
         : <Login userSession={userSession} /> }
         { userSession.isUserSignedIn() ? <ViewProfile/> : null}
       </div>
+      </Switch>
     )
   }
 }
