@@ -27,16 +27,16 @@ class Dashboard extends React.Component{
       <div>
         <input name="search" type="text" value={this.state.search} onChange={this.changeHandler}/>
         <input name="searchBtn" type="button" value="Search" onClick ={this.clickHandler}/>
-        { isUserSignedIn() ? <Logout userSession={userSession}/>
+        { userSession.isUserSignedIn() ? <Logout userSession={userSession}/>
         : <Login userSession={userSession} /> }
-        { isUserSignedIn() ? <ViewProfile/> : null}
+        { userSession.isUserSignedIn() ? <ViewProfile/> : null}
       </div>
     )
   }
 }
 
 const mapStateToProps = state => ({
-  userSession: state.userSession
+  // userSession: state.userSession
 })
 
 export default connect(mapStateToProps)(Dashboard)

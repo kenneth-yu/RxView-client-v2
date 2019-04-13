@@ -4,7 +4,7 @@ import Dashboard from './containers/Dashboard';
 import {appConfig} from './utils/constants';
 import {UserSession} from 'blockstack';
 import {connect} from 'react-redux';
-import {loadUserSession} from './Redux/Actions';
+import {loadUser} from './Redux/Actions';
 
 class App extends Component {
   state = {
@@ -13,20 +13,23 @@ class App extends Component {
 
   componentDidMount = async () => {
     const {userSession} = this.state
-    console.log("XX", userSession);
-    this.props.loadUserSession(userSession)
+    console.log("compdidmount, userSession:", userSession.isUserSignedIn());
+    this.props.loadUser(userSession)
+    // this.props.loadUser(userSession.loadUserData() )
+
     if (!userSession.isUserSignedIn() && userSession.isSignInPending() ) {
-      const userData = await userSession.handlePendingSignIn()
-      console.log("userData", userData);
+      const thing = await userSession.handlePendingSignIn()
+      // console.log("userSession", userSession);
       window.location="/"
     }
   }
 
   render() {
+    const {userSession} = this.state
     return (
     <div className="App">
       <Switch>
-        <Route path='/' component={Dashboard}/>
+        <Route path='/' render={() => <Dashboard userSession={userSession}/> }/>
       </Switch>
      </div>
     );
@@ -34,7 +37,7 @@ class App extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  loadUserSession: (userSession) => dispatch(loadUserSession(userSession))
+  loadUser: (userSession) => dispatch(loadUser(userSession))
 })
 
 export default connect(null, mapDispatchToProps)(App);
