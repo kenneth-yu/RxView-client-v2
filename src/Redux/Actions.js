@@ -1,6 +1,6 @@
-export const loadUserSession = (userSession) => ({
-  type: "LOAD_USER_SESSION",
-  payload: userSession
+const loadUserData = (userData) => ({
+  type: "LOAD_USER_DATA",
+  payload: userData
 })
 
 export function getEntries(){
@@ -75,7 +75,17 @@ export function addNewPrescription(dosage, user_id, drug_id){
       })
     }
     else{
-      window.alert("Please fill in ALL fields!")
+
+// export const loadUserSession = (userSession) => ({
+//   type: "LOAD_USER_SESSION",
+//   payload: userSession
+// })
+
+export const loadUser = userSession => {
+  return dispatch => {
+    // dispatch(loadUserSession(userSession))
+    if (userSession.isUserSignedIn()) {
+      dispatch(loadUserData(userSession.loadUserData()))
     }
   }
 }
