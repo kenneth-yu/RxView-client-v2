@@ -8,10 +8,13 @@ import thunk from 'redux-thunk';
 import {createStore, applyMiddleware, compose} from 'redux'
 import { BrowserRouter } from 'react-router-dom'
 import * as serviceWorker from './serviceWorker';
+import {composeWithDevTools} from 'redux-devtools-extension';
 
 const store = createStore(
   reducer,
-  applyMiddleware(thunk)
+  composeWithDevTools(
+    applyMiddleware(thunk)
+  )
 )
 
 ReactDOM.render((
