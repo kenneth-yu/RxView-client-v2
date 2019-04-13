@@ -17,4 +17,4 @@ class RxForm extends React.Component{
 //   allDrugs: allDrugs
 // }
 
-export default RxForm
+export default (RxForm)
