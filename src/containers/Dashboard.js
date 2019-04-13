@@ -4,14 +4,11 @@ import {UserSession, isUserSignedIn } from 'blockstack';
 import Login from '../components/Login';
 import Logout from '../components/Logout';
 import ViewProfile from '../components/ViewProfile';
-<<<<<<< HEAD
 import RxForm from '../components/RxForm';
 import EntryForm from '../components/EntryForm';
 import UserEdit from '../components/UserEdit'
 import { Route, Switch } from "react-router-dom";
-=======
 import {connect} from 'react-redux';
->>>>>>> 55bf41ed314db98e21a4faf9434ef05ab2fdf0dd
 
 class Dashboard extends React.Component{
   state = {
@@ -22,7 +19,7 @@ class Dashboard extends React.Component{
     this.setState({
       [event.target.name]: event.target.value
     })
-  } 
+  }
 
   clickHandler = (event) => {
     console.log(this.state.search)
