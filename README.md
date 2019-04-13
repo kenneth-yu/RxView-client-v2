@@ -1,5 +1,5 @@
 ## RxView
-### A DApp for Informing Clients of Side Effects
+A DApp for Informing Clients of Side Effects
 
 RxView is a side effect tracker for prescriptions, offering clients community-driven information about drug prescriptions and real, personal data to be shared with those starting new drugs.
 
