@@ -28,7 +28,7 @@ class Dashboard extends React.Component{
     this.setState({
       [event.target.name]: event.target.value
     })
-  }
+  } // I added a space
 
   clickHandler = (event) => {
     console.log(this.state.search)
