@@ -1,6 +1,8 @@
 const initialState = {
   currentUser: {},
-  userSession: {type:1}
+  userSession: {type:1},
+  allEntries: [],
+  allPrescriptions: []
 }
 
 export default function reducer(state = initialState, action) {
@@ -8,6 +10,19 @@ export default function reducer(state = initialState, action) {
     case 'LOAD_USER_SESSION':
       console.log("DDDD", action.payload);
       return {...state, userSession: action.payload}
+
+      case 'GET_ALL_ENTRIES':
+      return{...state, allEntries: action.payload}
+
+      case 'GET_ALL_PRESCRIPTIONS':
+      return{...state, allPrescriptions: action.payload}
+      
+      case 'ADD_NEW_ENTRY':
+      return{...state, allEntries: [...state.allEntries, action.payload]}
+
+      case 'ADD_NEW_PRESCRIPTION':
+      return{...state, allPrescriptions: [...state.allPrescriptions, action.payload]}
+
     default:
       return state
   }
