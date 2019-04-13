@@ -1,12 +1,27 @@
 import React from 'react'
 
 class Entry extends React.Component{
+  state = {
+    comments: ""
+  }
+  changeHandler = (event) =>{
+    console.log(event.target.value)
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  clickHandler = (event) => {
+    console.log(this.state.search)
+  }
+
   render(){
     return(
       <div>
         <h2>New Entry</h2>
-        <input type="textarea" name="comments"/>
-        <input type="button" name="submit" value="Submit"/>
+        <span>Comments: </span>
+        <input type="textarea" name="comments" onChange={this.changeHandler} value={this.state.value}/>
+        <input type="button" name="submit" onClick={this.clickHandler} value="Submit"/>
       </div>
     )
   }
