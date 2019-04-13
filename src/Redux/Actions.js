@@ -75,6 +75,9 @@ export function addNewPrescription(dosage, user_id, drug_id){
       })
     }
     else{
+    }
+  }
+}
 
 // export const loadUserSession = (userSession) => ({
 //   type: "LOAD_USER_SESSION",
