@@ -14,7 +14,6 @@ class ProfilePage extends React.Component {
       console.log("got data", theUserData);
       return this.setState({ data: theUserData })
     }
-
   }
 
   editProfileClick = () => {
