@@ -1,14 +1,34 @@
 import React from "react";
 import { appConfig } from "../utils/constants";
-import { UserSession, isUserSignedIn } from "blockstack";
+import { UserSession } from "blockstack";
 import Login from "../components/Login";
 import Logout from "../components/Logout";
 import ViewProfile from "../components/ViewProfile";
+import RxForm from "../components/RxForm";
+import EntryForm from "../components/EntryForm";
+import UserEdit from "../components/UserEdit";
+import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
+import ProfilePage from "../components/ProfilePage";
 
 class Dashboard extends React.Component {
   state = {
-    search: ""
+    search: "",
+    userSession: new UserSession({ appConfig })
+  };
+
+  componentDidMount = async () => {
+    const { userSession } = this.state;
+    if (!userSession.isUserSignedIn() && userSession.isSignInPending()) {
+      const userData = await userSession.handlePendingSignIn();
+      window.location = "/";
+
+      // if (!userData.username) {
+      //   throw new Error('This app requires a username.')
+      // } else {
+      //   window.location = "/"
+      // }
+    }
   };
 
   changeHandler = event => {
@@ -22,28 +42,40 @@ class Dashboard extends React.Component {
   };
 
   render() {
-    const { userSession } = this.props;
+    const { userSession } = this.state;
     return (
-      <div>
-        <input
-          name="search"
-          type="text"
-          value={this.state.search}
-          onChange={this.changeHandler}
+      <Switch>
+        <Route
+          path="/myprofile"
+          render={() => <ProfilePage userSession={userSession} />}
         />
-        <input
-          name="searchBtn"
-          type="button"
-          value="Search"
-          onClick={this.clickHandler}
+        <Route path="/newprescription" component={RxForm} />
+        <Route path="/newentry" component={EntryForm} />
+        <Route
+          path="/useredit"
+          render={() => <UserEdit userSession={userSession} />}
         />
-        {isUserSignedIn() ? (
-          <Logout userSession={userSession} />
-        ) : (
-          <Login userSession={userSession} />
-        )}
-        {isUserSignedIn() ? <ViewProfile /> : null}
-      </div>
+        <div>
+          <input
+            name="search"
+            type="text"
+            value={this.state.search}
+            onChange={this.changeHandler}
+          />
+          <input
+            name="searchBtn"
+            type="button"
+            value="Search"
+            onClick={this.clickHandler}
+          />
+          {userSession.isUserSignedIn() ? (
+            <Logout userSession={userSession} />
+          ) : (
+            <Login userSession={userSession} />
+          )}
+          {userSession.isUserSignedIn() ? <ViewProfile /> : null}
+        </div>
+      </Switch>
     );
   }
 }

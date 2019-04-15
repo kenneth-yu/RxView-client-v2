@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { getTheMeds } from "../Redux/Actions";
+import Drug from "./Drug";
 
 class DrugShow extends Component {
   componentDidMount() {
@@ -9,15 +10,11 @@ class DrugShow extends Component {
   }
 
   render() {
+    const theDrugs = this.props.drugs.map(drug => {
+      return <Drug key={drug.id} drug={drug} />;
+    });
     console.log(this.props.drugs);
-    return (
-      <div className="showDrugContainer">
-        <h1 className="drug_name">Drug Name</h1>
-        <img src="" alt="the drug" />
-        <h2>Side Effects</h2>
-        <li>this is a side effect</li>
-      </div>
-    );
+    return <div>{theDrugs}</div>;
   }
 }
 
