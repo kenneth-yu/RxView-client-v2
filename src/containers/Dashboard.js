@@ -14,14 +14,14 @@ import ProfilePage from '../components/ProfilePage';
 class Dashboard extends React.Component {
   state = {
     search: "",
-    userSession: new UserSession({appConfig})
-  }
+    userSession: new UserSession({ appConfig })
+  };
 
   componentDidMount = async () => {
-    const {userSession} = this.state
-    if (!userSession.isUserSignedIn() && userSession.isSignInPending() ) {
-      const userData = await userSession.handlePendingSignIn()
-      window.location="/"
+    const { userSession } = this.state;
+    if (!userSession.isUserSignedIn() && userSession.isSignInPending()) {
+      const userData = await userSession.handlePendingSignIn();
+      window.location = "/";
 
       // if (!userData.username) {
       //   throw new Error('This app requires a username.')

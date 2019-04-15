@@ -1,15 +1,26 @@
-import React from 'react'
+import React from "react";
 
-class ViewProfile extends React.Component{
+class ViewProfile extends React.Component {
   clickHandler = () => {
-    window.location = '/myprofile'
-  }
+    window.location = "/myprofile";
+  };
 
-  render(){
-    return(
-      <input type="button" value="View Profile" onClick={this.clickHandler}/>
-    )
+  clickHandlerMeds = () => {
+    window.location = "/meds";
+  };
+
+  render() {
+    return (
+      <div>
+        <input type="button" value="View Profile" onClick={this.clickHandler} />
+        <input
+          type="button"
+          value="View All Meds"
+          onClick={this.clickHandlerMeds}
+        />
+      </div>
+    );
   }
 }
 
-export default ViewProfile
+export default ViewProfile;

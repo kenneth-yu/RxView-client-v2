@@ -15,23 +15,26 @@ class App extends Component {
   componentDidMount = async () => {
     const {userSession} = this.state
     console.log("compdidmount, userSession:", userSession.isUserSignedIn());
-    this.props.loadUser(userSession)
+    this.props.loadUser(userSession);
     // this.props.loadUser(userSession.loadUserData() )
 
-    if (!userSession.isUserSignedIn() && userSession.isSignInPending() ) {
-      const thing = await userSession.handlePendingSignIn()
+    if (!userSession.isUserSignedIn() && userSession.isSignInPending()) {
+      const thing = await userSession.handlePendingSignIn();
       // console.log("userSession", userSession);
       window.location="/"
     }
   };
 
   render() {
-    const {userSession} = this.state
+    const { userSession } = this.state;
     return (
       <div className="App">
         <Switch>
           <Route path="/meds" component={DrugShow} />
-          <Route path="/" render={() => <Dashboard userSession={userSession}/> }/>
+          <Route
+            path="/"
+            render={() => <Dashboard userSession={userSession} />}
+          />
         </Switch>
       </div>
     );
