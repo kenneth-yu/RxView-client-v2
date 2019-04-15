@@ -1,6 +1,6 @@
 import React from 'react'
 import {appConfig} from '../utils/constants';
-import {UserSession} from 'blockstack';
+import {UserSession, isUserSignedIn } from 'blockstack';
 import Login from '../components/Login';
 import Logout from '../components/Logout';
 import ViewProfile from '../components/ViewProfile';
@@ -11,7 +11,7 @@ import { Route, Switch } from "react-router-dom";
 import {connect} from 'react-redux';
 import ProfilePage from '../components/ProfilePage';
 
-class Dashboard extends React.Component{
+class Dashboard extends React.Component {
   state = {
     search: "",
     userSession: new UserSession({appConfig})
@@ -31,15 +31,15 @@ class Dashboard extends React.Component{
     }
   }
 
-  changeHandler = (event) =>{
+  changeHandler = event => {
     this.setState({
       [event.target.name]: event.target.value
     })
   }
 
-  clickHandler = (event) => {
-    console.log(this.state.search)
-  }
+  clickHandler = event => {
+    console.log(this.state.search);
+  };
 
   render(){
     const {userSession} = this.state
@@ -68,4 +68,4 @@ const mapStateToProps = state => ({
   // userSession: state.userSession
 })
 
-export default connect(mapStateToProps)(Dashboard)
+export default connect(mapStateToProps)(Dashboard);

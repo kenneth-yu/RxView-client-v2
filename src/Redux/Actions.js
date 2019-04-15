@@ -1,3 +1,4 @@
+
 const loadUserData = (userData) => ({
   type: "LOAD_USER_DATA",
   payload: userData
@@ -92,3 +93,24 @@ export const loadUser = userSession => {
     }
   }
 }
+
+export const setMeds = meds => ({
+  type: "SET_MEDS",
+  payload: meds
+})
+
+export const getTheMeds = () => {
+  return dispatch => {
+    fetch("http://localhost:3000/api/v1/drugs", {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        accepts: "application/json"
+      }
+    })
+      .then(res => res.json())
+      .then(res => {
+        dispatch(setMeds(res));
+      });
+  };
+};
